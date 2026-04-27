@@ -10,6 +10,11 @@ import { Rental } from '../rental/rental';
   styleUrl: './home.css',
 })
 export class Home {
-  
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
   
 }

@@ -1,16 +1,105 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="topnav" id="myTopnav">
+<div class="topnav" [class.responsive]="isMenuOpen" id="myTopnav">
   <a href="#home" class="active">Home</a>
   <a href="#news">Buy</a>
   <a href="#contact">Sell</a>
   <a href="#about">Manage Rentals</a>
 
   <a href="#about"><button type="button">Sign Up/ Login</button></a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <a href="javascript:void(0);" class="icon" (click)="toggleMenu()">
     <i class="fa fa-bars"></i>
   </a>
   
 </div>
 
+
+<!-- SECTION 1 -->
+
+
+
+<!--  -->
+<!-- Grid -->
+
+<div class="grid-container">
+    <div class="map-area">
+        <app-map></app-map>
+    </div>
+
+    <div class="filter-panel">
+
+        <!-- Header Section -->
+        <div class="header-section">
+            <label>Looking For</label>
+            <select name="looking-for">
+                <option value="buy">Buy</option>
+                <option value="rent">Rent</option>
+            </select>
+        </div>
+
+        <!-- Location Section -->
+<div class="section">
+    <label>Location</label>
+    <input type="text" name="location" placeholder="Enter city or area">
+</div>
+
+        <!-- Price Section -->
+        <div class="section">
+            <label>Price Range</label>
+            <select name="price-range">
+                <option value="">Select Price</option>
+                <option>15000 - 25000</option>
+                <option>25000 - 35000</option>
+                <option>35000 - 50000</option>
+                <option>50000 - 75000</option>
+                <option>75000 - 100000</option>
+            </select>
+        </div>
+
+        <!-- Property Type -->
+        <div class="section">
+            <label>Property Type</label>
+            <select name="property-type">
+                <option value="">Select Type</option>
+                <option>House</option>
+                <option>Apartment</option>
+                <option>Condo</option>
+                <option>Townhouse</option>
+                <option>Commercial</option>
+            </select>
+        </div>
+
+        <!-- Bedrooms -->
+        <div class="section">
+            <label>Bedrooms</label>
+            <select name="bedrooms">
+                <option value="">Select Bedrooms</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5+</option>
+            </select>
+        </div>
+
+        <!-- Amenities -->
+        <div class="section">
+            <label>Amenities</label>
+            <div class="amenities">
+                <label><input type="checkbox"> Pool</label>
+                <label><input type="checkbox"> Gym</label>
+                <label><input type="checkbox"> Parking</label>
+                <label><input type="checkbox"> Pet Friendly</label>
+                <label><input type="checkbox"> Wifi</label>
+            </div>
+        </div>
+
+        <!-- Action Section -->
+        <div class="action-section">
+            <button class="apply-btn">Apply Filters</button>
+            <button class="reset-btn">Reset</button>
+        </div>
+
+    </div>
+</div>
