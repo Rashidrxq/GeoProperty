@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { Buy } from '../buy/buy';
 import { Sell } from '../sell/sell';
 import { Rental } from '../rental/rental';
+import { Map } from '../map/map';
+
 
 @Component({
   selector: 'app-home',
-  imports: [Buy, Sell, Rental],
+  imports: [Buy, Sell, Rental, Map],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
