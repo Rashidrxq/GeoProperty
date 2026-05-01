@@ -1,22 +1,33 @@
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="topnav" [class.responsive]="isMenuOpen" id="myTopnav">
-  <a href="#home" class="active">Home</a>
-  <a href="#news">Buy</a>
-  <a href="#contact">Sell</a>
-  <a href="#about">Manage Rentals</a>
+    <a href="#home" class="active">Home</a>
+    <a href="#news">Buy</a>
+    <a href="#contact">Sell</a>
+    <a href="#about">Manage Rentals</a>
 
-  <a href="#about"><button type="button">Sign Up/ Login</button></a>
-  <a href="javascript:void(0);" class="icon" (click)="toggleMenu()">
-    <i class="fa fa-bars"></i>
-  </a>
-  
+    <a href="#about"><button type="button">Sign Up/ Login</button></a>
+    <a href="javascript:void(0);" class="icon" (click)="toggleMenu()">
+        <i class="fa fa-bars"></i>
+    </a>
+
 </div>
 
 
 <!-- SECTION 1 -->
-
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="badge">Featured Properties</span>
+        <h1>Exquisite Living, <br>Tailored For You</h1>
+        <p>Explore our curated collection of luxury estates and urban retreats. Whether you're buying or renting, find
+            the perfect space to call home.</p>
+        <div class="hero-actions">
+            <button class="hero-primary-btn">View All Listings</button>
+            <button class="hero-secondary-btn">Contact Agent</button>
+        </div>
+    </div>
+</div>
 
 
 <!--  -->
@@ -24,7 +35,7 @@
 
 <div class="grid-container">
     <div class="map-area">
-        <app-map></app-map> 
+        <app-map></app-map>
     </div>
 
     <div class="filter-panel">
@@ -32,22 +43,23 @@
         <!-- Header Section -->
         <div class="header-section">
             <label>Looking For</label>
-            <select name="looking-for">
+            <select [(ngModel)]="selectedLookingFor" (change)="applyFilters()">
                 <option value="buy">Buy</option>
                 <option value="rent">Rent</option>
             </select>
         </div>
 
         <!-- Location Section -->
-<div class="section">
-    <label>Location</label>
-    <input type="text" name="location" placeholder="Enter city or area">
-</div>
+        <div class="section">
+            <label>Location</label>
+            <input type="text" [(ngModel)]="selectedLocation" (change)="applyFilters()"
+                placeholder="Enter city or area">
+        </div>
 
         <!-- Price Section -->
         <div class="section">
             <label>Price Range</label>
-            <select name="price-range">
+            <select [(ngModel)]="selectedPrice" (change)="applyFilters()">
                 <option value="">Select Price</option>
                 <option>15000 - 25000</option>
                 <option>25000 - 35000</option>
@@ -60,7 +72,7 @@
         <!-- Property Type -->
         <div class="section">
             <label>Property Type</label>
-            <select name="property-type">
+            <select [(ngModel)]="selectedPropertyType" (change)="applyFilters()">
                 <option value="">Select Type</option>
                 <option>House</option>
                 <option>Apartment</option>
@@ -73,7 +85,7 @@
         <!-- Bedrooms -->
         <div class="section">
             <label>Bedrooms</label>
-            <select name="bedrooms">
+            <select [(ngModel)]="selectedBedrooms" (change)="applyFilters()">
                 <option value="">Select Bedrooms</option>
                 <option>1</option>
                 <option>2</option>
@@ -87,36 +99,55 @@
         <div class="section">
             <label>Amenities</label>
             <div class="amenities">
-                <label><input type="checkbox"> Pool</label>
-                <label><input type="checkbox"> Gym</label>
-                <label><input type="checkbox"> Parking</label>
-                <label><input type="checkbox"> Pet Friendly</label>
-                <label><input type="checkbox"> Wifi</label>
+                <label><input type="checkbox" (change)="toggleAmenity('pool', $event)" (change)="applyFilters()">
+                    Pool</label>
+                <label><input type="checkbox" (change)="toggleAmenity('gym', $event)" (change)="applyFilters()">
+                    Gym</label>
+                <label><input type="checkbox" (change)="toggleAmenity('parking', $event)" (change)="applyFilters()">
+                    Parking</label>
+                <label><input type="checkbox" (change)="toggleAmenity('pet', $event)" (change)="applyFilters()"> Pet
+                    Friendly</label>
+                <label><input type="checkbox" (change)="toggleAmenity('wifi', $event)" (change)="applyFilters()">
+                    Wifi</label>
             </div>
         </div>
 
         <!-- Action Section -->
         <div class="action-section">
-            <button class="apply-btn">Apply Filters</button>
+            <button class="apply-btn" (click)="applyFilters()">Apply Filters</button>
             <button class="reset-btn">Reset</button>
         </div>
 
     </div>
 </div>
 
-<!-- SECTION 2: Hero CTA -->
-<div class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <span class="badge">Featured Properties</span>
-        <h1>Exquisite Living, <br>Tailored For You</h1>
-        <p>Explore our curated collection of luxury estates and urban retreats. Whether you're buying or renting, find the perfect space to call home.</p>
-        <div class="hero-actions">
-            <button class="hero-primary-btn">View All Listings</button>
-            <button class="hero-secondary-btn">Contact Agent</button>
+
+<div class="property-list">
+    <div *ngFor="let property of filteredProperties" class="property-card">
+        <img [src]="property.propertyimg" />
+
+        <div class="card-content">
+            <h3>{{ property.title }}</h3>
+            <p class="price">₹{{ property.price }}</p>
+            <p class="location">{{ property.location }}</p>
+
+            <div class="amenities">
+                <span *ngFor="let a of property.amenities">{{ a }}</span>
+            </div>
         </div>
     </div>
 </div>
 
 
-<!-- SECTION 2 -->
+<!-- SECTION 3: showing list of properties -->
+
+
+
+
+
+
+<!-- SECTION 3 Contact Us -->
+
+<!-- SECTION 4: Testimonials -->
+
+<!-- footer -->
