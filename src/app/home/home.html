@@ -123,7 +123,8 @@
 
 
 <div class="property-list">
-    <div *ngFor="let property of filteredProperties" class="property-card">
+    <div *ngFor="let property of filteredProperties" class="property-card"
+        (mouseenter)="onPropertyHover(property)" (mouseleave)="onMouseLeave()">
         <img [src]="property.propertyimg" />
 
         <div class="card-content">

@@ -96,4 +96,17 @@ export class Home {
 
 
 
+
+  // 
+  onPropertyHover(property: any) {
+    if (this.map) {
+      this.map.highlightMarker(property);
+    }
+  }
+
+  onMouseLeave() {
+    if (this.map) {
+      this.map.resetMarkers();
+    }
+  }
 }
