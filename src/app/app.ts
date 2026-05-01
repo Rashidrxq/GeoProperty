@@ -1,17 +1,9 @@
 import { Component, signal } from '@angular/core';
-
-import { Home } from './home/home';
-import { Dashboard } from './dashboard/dashboard';
-import { Login } from './login/login';
-import { Buy } from './buy/buy';
-import { Sell } from './sell/sell';
-import { Rental } from './rental/rental';
-import { Map } from './map/map';
-
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Home, Dashboard, Login, Buy, Sell, Rental, Map],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

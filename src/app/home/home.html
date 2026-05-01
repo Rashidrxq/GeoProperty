@@ -124,7 +124,7 @@
 
 <div class="property-list">
     <div *ngFor="let property of filteredProperties" class="property-card"
-        (mouseenter)="onPropertyHover(property)" (mouseleave)="onMouseLeave()">
+        (mouseenter)="onPropertyHover(property)" (mouseleave)="onMouseLeave()" (click)="openDetails(property)">
         <img [src]="property.propertyimg" />
 
         <div class="card-content">

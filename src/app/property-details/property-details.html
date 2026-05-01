@@ -1,0 +1,55 @@
+<div class="details-page" *ngIf="property">
+  
+  <div class="header-actions">
+    <button class="back-btn" (click)="goBack()">
+      <i class="fa fa-arrow-left"></i> Back
+    </button>
+  </div>
+
+  <div class="details-card">
+    <div class="image-section">
+      <img [src]="mainImage" alt="Property Image" />
+    </div>
+    
+    <div class="info-section">
+      <div class="badge">{{ property.lookingfor === 'rent' ? 'For Rent' : 'For Sale' }}</div>
+      
+      <h1>{{ property.title }}</h1>
+      <h2 class="price">₹{{ property.price }}</h2>
+      <p class="location"><i class="fa fa-map-marker"></i> {{ property.location }}</p>
+
+      <div class="divider"></div>
+
+      <div class="property-stats">
+        <p><strong>Bedrooms:</strong> {{ property.bedroom }}</p>
+        <p><strong>Bathrooms:</strong> {{ property.bathroom }}</p>
+        <p><strong>Square Feet:</strong> {{ property.sqft }} sqft</p>
+        <p><strong>Year Built:</strong> {{ property.yearBuilt }}</p>
+        <p><strong>Type:</strong> <span class="capitalize">{{ property.propertytype }}</span></p>
+      </div>
+
+      <div class="amenities-section">
+        <h3>Amenities</h3>
+        <div class="amenities">
+          <span *ngFor="let a of property.amenities">{{ a }}</span>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="contact-btn">Contact Agent</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="image-gallery" *ngIf="property.images && property.images.length > 0">
+    <h3>Property Gallery</h3>
+    <div class="gallery-grid">
+      <img *ngFor="let img of property.images" 
+           [src]="img" 
+           alt="Gallery Image" 
+           [class.active]="mainImage === img"
+           (click)="setMainImage(img)" />
+    </div>
+  </div>
+
+</div>
