@@ -26,6 +26,10 @@ openDetails(property: any) {
   this.propertyService.selectedProperty = property;
   this.router.navigate(['/property', property.id]);
 }
+
+goToDashboard() {
+  this.router.navigate(['/dashboard']);
+}
   @ViewChild(Map) map!: Map;
   selectedPrice: string = '';
   selectedLocation: string = '';
