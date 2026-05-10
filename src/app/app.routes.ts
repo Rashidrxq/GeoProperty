@@ -3,11 +3,14 @@ import { PropertyDetails } from './property-details/property-details';
 import { Home } from './home/home';
 import { Dashboard } from './dashboard/dashboard';
 import { Login } from './login/login';
+import { Agent } from './agent/agent';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: Home },
     { path: 'login', component: Login },
     { path: 'property/:id', component: PropertyDetails },
-    { path: 'dashboard', component: Dashboard }
+    { path: 'dashboard', component: Dashboard },        
+    { path: 'agent', component: Agent }
 ];
