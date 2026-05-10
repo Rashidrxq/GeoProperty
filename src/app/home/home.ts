@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 import { PropertyService } from '../property';
 
 import { Agent } from '../agent/agent';
+import { Footer } from '../footer/footer';
 
 
 @Component({
   selector: 'app-home',
-  imports: [Buy, Sell, Rental, Map, FormsModule, CommonModule, Agent],
+  imports: [Buy, Sell, Rental, Map, FormsModule, CommonModule, Agent, Footer],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
