@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Buy } from '../buy/buy';
 import { Sell } from '../sell/sell';
@@ -19,7 +19,7 @@ import { Footer } from '../footer/footer';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements OnInit, AfterViewInit {
   constructor(
   private router: Router,
   private propertyService: PropertyService
@@ -64,6 +64,14 @@ goToLogin() {
   ngOnInit() {
     this.properties = this.propertyService.getProperties();
     this.filteredProperties = this.properties;
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      if (this.map) {
+        this.map.updateMarkers(this.filteredProperties);
+      }
+    }, 100);
   }
 
 

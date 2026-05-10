@@ -24,20 +24,7 @@ export class Map implements AfterViewInit {
   map: any;
   markers: any = {};
 
-  properties = [
-    { id: 1, title: 'House in Calicut', lat: 11.2588, lng: 75.7804, price: 25000 },
-    { id: 2, title: 'Apartment near Beach', lat: 11.2605, lng: 75.7820, price: 35000 },
-    { id: 3, title: 'Villa with Parking', lat: 11.2550, lng: 75.7780, price: 50000 },
-    { id: 4, title: 'House in Calicut', lat: 11.2588, lng: 75.7804, price: 25000 },
-    { id: 5, title: 'Apartment near Beach', lat: 11.2605, lng: 75.7820, price: 35000 },
-    { id: 6, title: 'Villa with Parking', lat: 11.2550, lng: 75.7780, price: 50000 },
-    { id: 7, title: 'House in Calicut', lat: 11.2588, lng: 75.7804, price: 25000 },
-    { id: 8, title: 'Apartment near Beach', lat: 11.2605, lng: 75.7820, price: 35000 },
-    { id: 9, title: 'Villa with Parking', lat: 11.2550, lng: 75.7780, price: 50000 },
-    { id: 10, title: 'House in Calicut', lat: 11.2588, lng: 75.7804, price: 25000 },
-    { id: 11, title: 'Apartment near Beach', lat: 11.2605, lng: 75.7820, price: 35000 },
-    { id: 12, title: 'Villa with Parking', lat: 11.2550, lng: 75.7780, price: 50000 }
-  ];
+  properties = [];
 
   ngAfterViewInit(): void {
     this.map = L.map('map').setView([11.2588, 75.7804], 13);
@@ -45,8 +32,6 @@ export class Map implements AfterViewInit {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap'
     }).addTo(this.map);
-
-    this.updateMarkers(this.properties);
   }
 
   clearMarkers() {

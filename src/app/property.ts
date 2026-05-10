@@ -20,7 +20,18 @@ export class PropertyService {
   }
 
   addProperty(property: any) {
-    property.id = this.properties.length + 1;
+    property.id = this.properties.length ? Math.max(...this.properties.map(p => p.id)) + 1 : 1;
     this.properties.unshift(property);
+  }
+
+  updateProperty(updatedProperty: any) {
+    const index = this.properties.findIndex(p => p.id === updatedProperty.id);
+    if (index !== -1) {
+      this.properties[index] = { ...updatedProperty };
+    }
+  }
+
+  deleteProperty(id: number) {
+    this.properties = this.properties.filter(p => p.id !== id);
   }
 }
